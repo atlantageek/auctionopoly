@@ -1,5 +1,11 @@
 class LobbyController < ApplicationController
-  before_action :authenticate_user!
   def index
+    @games=Game.all
+  end
+
+  def show
+  end
+
+  def join
   end
 end

@@ -7,7 +7,15 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-
+console.log('Hi')
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import gameChannel from "../channels/game_channel";
+$(document).on('turbolinks:load', function () {
+        console.log("hi")
+        gameChannel.join();
+        $('#message').val('')
+ 
+  })

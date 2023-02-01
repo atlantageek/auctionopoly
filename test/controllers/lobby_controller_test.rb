@@ -5,4 +5,14 @@ class LobbyControllerTest < ActionDispatch::IntegrationTest
     get lobby_index_url
     assert_response :success
   end
+
+  test "should get show" do
+    get lobby_show_url
+    assert_response :success
+  end
+
+  test "should get join" do
+    get lobby_join_url
+    assert_response :success
+  end
 end
