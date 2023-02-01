@@ -308,4 +308,16 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+
+  Warden::Manager.after_set_user do |user,auth,opts|
+    scope = opts[:scope]
+    Rails.logger.debug(scope)
+    Rails.logger.debug("Warden " + user.id.to_s)
+    auth.cookies.signed["#{scope}_id"] = user.id
+  end
+  
+  Warden::Manager.before_logout do |user, auth, opts|
+    scope = opts[:scope]
+    auth.cookies.signed["#{scope}_id"] = nil
+  end
 end
