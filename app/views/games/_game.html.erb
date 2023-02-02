@@ -1,1 +1,2 @@
-<div><span><%=game.name%></span></div>
+<div>a<%=game.name%><%= button_to "Join", {:controller => :lobby, :action => 'join',:id => game.id}, :method => :get %>
+</div>
